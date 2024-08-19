@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/order")
 public class TestController {
 
 	@Value("${msg}")
@@ -16,10 +15,10 @@ public class TestController {
 		super();
 	}
 
-	@GetMapping("/message")
+	@GetMapping("/order/message")
 	public String getMessage()
 	{
-		return "Test Message :  " + message;
+		return "Test Message : Order service : " + message;
 	}
 	
 }

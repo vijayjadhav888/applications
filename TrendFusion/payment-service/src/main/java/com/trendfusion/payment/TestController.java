@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/payment")
 public class TestController {
 
 	@Value("${msg}")
@@ -16,7 +15,7 @@ public class TestController {
 		super();
 	}
 
-	@GetMapping("/message")
+	@GetMapping("/payment/message")
 	public String getMessage()
 	{
 		return "Test Message :  " + message;
