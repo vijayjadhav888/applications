@@ -1,0 +1,21 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: optional:configserver:http://localhost:8088
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+        - id: CUSTOMER-SERVICE
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+          - Path=/customer/**
+        - id: NOTIFICATION-SERVICE
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+          - Path=/notification/**
