@@ -1,4 +1,4 @@
-package com.trendfusion.customer;
+package com.trendfusion.customerapp.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ public class TestController {
 		super();
 	}
 
-	@GetMapping("/customer/message")
+	@GetMapping("/customers/message")
 	public String getMessage()
 	{
 		return "Test Message : Customer service  " + message;

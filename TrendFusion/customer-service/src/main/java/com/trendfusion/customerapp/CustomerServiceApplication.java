@@ -1,4 +1,4 @@
-package com.trendfusion.customer;
+package com.trendfusion.customerapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
