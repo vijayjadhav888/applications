@@ -62,4 +62,11 @@ public class Customer {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", name=" + name + ", age=" + age + ", phoneNo=" + phoneNo
+				+ ", address=" + address + ", active=" + active + "]";
+	}
+	
 }

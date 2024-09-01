@@ -3,6 +3,8 @@ package com.trendfusion.customerapp.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,24 +24,31 @@ import com.trendfusion.customerapp.service.CustomerService;
 @RequestMapping("/customers")
 public class CustomerController {
 
+	Logger logger = LoggerFactory.getLogger(CustomerController.class);
+	
     @Autowired
     private CustomerService customerService;
 
     @GetMapping
     public List<Customer> getAllCustomers() {
+    	logger.info("Returns all customer");
         return customerService.getAllCustomers();
+        
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable String id) {
-        Optional<Customer> customer = customerService.getCustomerById(id);
+    	logger.info("search customer by id "+ id);
+    	Optional<Customer> customer = customerService.getCustomerById(id);
         return customer.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        Customer savedCustomer = customerService.saveCustomer(customer);
+        
+    	logger.info("Add customer...."); 
+    	Customer savedCustomer = customerService.saveCustomer(customer);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCustomer);
     }
 
@@ -56,8 +65,10 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable String id) {
         if (!customerService.getCustomerById(id).isPresent()) {
-            return ResponseEntity.notFound().build();
+        	logger.error("not found customer by id : "+id);
+        	return ResponseEntity.notFound().build();
         }
+        logger.info("delete customer by id ");
         customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
     }
