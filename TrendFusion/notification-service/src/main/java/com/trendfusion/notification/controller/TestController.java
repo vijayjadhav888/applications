@@ -1,8 +1,9 @@
-package com.trendfusion.notification;
+package com.trendfusion.notification.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,4 +26,10 @@ public class TestController {
 		return "Test Message : notification service  " + message;
 	}
 	
+    @KafkaListener(topics = "notification-topic", groupId = "notification")
+    public void listen(String message) {
+    	logger.info("Test Message : notification service "+message);
+        System.out.println("Received message: " + message);
+    }
+
 }

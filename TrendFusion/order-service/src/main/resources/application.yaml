@@ -3,7 +3,13 @@ spring:
     name: order-service
   config:
     import: optional:configserver:http://localhost:8088
-    
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092 
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  
 logging:
   file:
     name: C:\Vijay\logs\ELK-logstack\TrendFusion\logs-order.log
