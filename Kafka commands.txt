@@ -1,0 +1,11 @@
+
+Change server.properties and zookeeper.properties
+
+C:\Vijay\kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+C:\Vijay\kafka> .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+C:\Vijay\kafka> .\bin\windows\kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
+
+C:\Vijay\kafka> .\bin\windows\kafka-console-consumer.bat --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+

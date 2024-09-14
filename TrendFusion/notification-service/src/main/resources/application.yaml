@@ -10,10 +10,24 @@ spring:
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/notificationdb
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: vijayjadhav888@gmail.com
+    password: Vijay@123
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
 
 logging:
   file:
     name: C:\Vijay\logs\ELK-logstack\TrendFusion\logs-notification.log
-    
-    
